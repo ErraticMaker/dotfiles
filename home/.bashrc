@@ -117,3 +117,7 @@ fi
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+
+# Call Bash-it
+
+source "$HOME/.bash_profile"
