@@ -57,7 +57,7 @@ soup.accept_policy = cookie_policy.no_third_party
 -- See: http://www.lua.org/manual/5.1/manual.html#pdf-string.format
 search_engines = {
     luakit      = "http://luakit.org/search/index/luakit?q=%s",
-    duckduckgo  = "http://duckduckgo.com/?q=%s&t=debian",
+    duckduckgo  = "http://duckduckgo.com/?q=%s&t=debian&kh=1&kae=t",
     github      = "https://github.com/search?q=%s",
     google      = "http://google.com/search?q=%s",
     imdb        = "http://www.imdb.com/find?s=all&q=%s",
