@@ -1,0 +1,3 @@
+[submodule "home/.config/ipython/extensions/base16-matplotlib"]
+	path = home/.config/ipython/extensions/base16-matplotlib
+	url = https://github.com/benjaminaschultz/base16-ipython-matplotlibrc.git
