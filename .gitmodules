@@ -1,0 +1,3 @@
+[submodule "home/.ipython/nbextensions/asymptote"]
+	path = home/.ipython/nbextensions/asymptote
+	url = https://github.com/jrjohansson/ipython-asymptote.git
