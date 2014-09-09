@@ -1,6 +1,6 @@
-[submodule "home/.config/ipython/extensions/base16-matplotlib"]
-	path = home/.config/ipython/extensions/base16-matplotlib
-	url = https://github.com/benjaminaschultz/base16-ipython-matplotlibrc.git
-[submodule "home/.config/ipython/extensions/asymptote"]
-	path = home/.config/ipython/extensions/asymptote
+[submodule "home/.ipython/nbextensions/asymptote"]
+	path = home/.ipython/nbextensions/asymptote
 	url = https://github.com/jrjohansson/ipython-asymptote.git
+[submodule "home/.ipython/nbextensions/matplotlibrc"]
+	path = home/.ipython/nbextensions/matplotlibrc
+	url = https://github.com/benjaminaschultz/base16-ipython-matplotlibrc.git

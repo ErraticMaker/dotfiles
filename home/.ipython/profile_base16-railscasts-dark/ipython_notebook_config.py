@@ -11,12 +11,13 @@ c = get_config()
 # The url for MathJax.js.
 # c.NotebookApp.mathjax_url = ''
 
-# The IP address the notebook server will listen on.
-# c.NotebookApp.ip = '127.0.0.1'
+# Supply extra arguments that will be passed to Jinja environment.
+# c.NotebookApp.jinja_environment_options = {}
 
-# The base URL for the notebook server.
-# 
-# Leading and trailing slashes can be omitted, and will automatically be added.
+# The IP address the notebook server will listen on.
+# c.NotebookApp.ip = 'localhost'
+
+# DEPRECATED use base_url
 # c.NotebookApp.base_project_url = '/'
 
 # Create a massive crash report when IPython encounters what may be an internal
@@ -38,7 +39,7 @@ c = get_config()
 # platform dependent and determined by the python standard library `webbrowser`
 # module, unless it is overridden using the --browser (NotebookApp.browser)
 # configuration option.
-# c.NotebookApp.open_browser = True
+c.NotebookApp.open_browser = True
 
 # The notebook manager class to use.
 # c.NotebookApp.notebook_manager_class = 'IPython.html.services.notebooks.filenbmanager.FileNotebookManager'
@@ -46,16 +47,18 @@ c = get_config()
 # The date format used by logging formatters for %(asctime)s
 # c.NotebookApp.log_datefmt = '%Y-%m-%d %H:%M:%S'
 
-# The base URL for the kernel server
-# 
-# Leading and trailing slashes can be omitted, and will automatically be added.
-# c.NotebookApp.base_kernel_url = '/'
-
 # The port the notebook server will listen on.
 # c.NotebookApp.port = 8888
 
 # Whether to overwrite existing config files when copying
 # c.NotebookApp.overwrite = False
+
+# Set the Access-Control-Allow-Origin header
+# 
+# Use '*' to allow any origin to access your server.
+# 
+# Takes precedence over allow_origin_pat.
+# c.NotebookApp.allow_origin = ''
 
 # Whether to enable MathJax for typesetting math/TeX
 # 
@@ -66,28 +69,46 @@ c = get_config()
 # When disabled, equations etc. will appear as their untransformed TeX source.
 # c.NotebookApp.enable_mathjax = True
 
+# Use a regular expression for the Access-Control-Allow-Origin header
+# 
+# Requests from an origin matching the expression will get replies with:
+# 
+#     Access-Control-Allow-Origin: origin
+# 
+# where `origin` is the origin of the request.
+# 
+# Ignored if allow_origin is set.
+# c.NotebookApp.allow_origin_pat = ''
+
 # The full path to an SSL/TLS certificate file.
 # c.NotebookApp.certfile = u''
 
-# Path to an extra config file to load.
+# The base URL for the notebook server.
 # 
-# If specified, load this config file in addition to any other IPython config.
-# c.NotebookApp.extra_config_file = u''
+# Leading and trailing slashes can be omitted, and will automatically be added.
+# c.NotebookApp.base_url = '/'
+
+# The directory to use for notebooks and kernels.
+c.NotebookApp.notebook_dir = u'/home/zubieta/Documents/Notebooks'
+
+# 
+# c.NotebookApp.file_to_run = ''
 
 # The IPython profile to use.
 # c.NotebookApp.profile = u'default'
 
-# The base URL for the websocket server, if it differs from the HTTP server
-# (hint: it almost certainly doesn't).
-# 
-# Should be in the form of an HTTP origin: ws[s]://hostname[:port]
-# c.NotebookApp.websocket_url = ''
+# paths for Javascript extensions. By default, this is just
+# IPYTHONDIR/nbextensions
+# c.NotebookApp.nbextensions_path = []
+
+# The Logging format template
+# c.NotebookApp.log_format = '[%(name)s]%(highlevel)s %(message)s'
 
 # The name of the IPython directory. This directory is used for logging
 # configuration (through profiles), history storage, etc. The default is usually
 # $HOME/.ipython. This options can also be specified through the environment
 # variable IPYTHONDIR.
-# c.NotebookApp.ipython_dir = u'/home/zubieta/.config/ipython'
+# c.NotebookApp.ipython_dir = u''
 
 # Set the log level by value or name.
 # c.NotebookApp.log_level = 30
@@ -101,17 +122,13 @@ c = get_config()
 # The string should be of the form type:salt:hashed-password.
 # c.NotebookApp.password = u''
 
-# The Logging format template
-# c.NotebookApp.log_format = '[%(name)s]%(highlevel)s %(message)s'
+# Set the Access-Control-Allow-Credentials: true header
+# c.NotebookApp.allow_credentials = False
 
-# Wether to use Browser Side less-css parsing instead of compiled css version in
-# templates that allows it. This is mainly convenient when working on the less
-# file to avoid a build step, or if user want to overwrite some of the less
-# variables without having to recompile everything.
+# Path to an extra config file to load.
 # 
-# You will need to install the less.js component in the static directory either
-# in the source tree or in your profile folder.
-# c.NotebookApp.use_less = False
+# If specified, load this config file in addition to any other IPython config.
+# c.NotebookApp.extra_config_file = u''
 
 # Extra paths to search for serving static files.
 # 
@@ -120,7 +137,7 @@ c = get_config()
 # c.NotebookApp.extra_static_paths = []
 
 # Whether to trust or not X-Scheme/X-Forwarded-Proto and X-Real-Ip/X-Forwarded-
-# For headerssent by the upstream reverse proxy. Neccesary if the proxy handles
+# For headerssent by the upstream reverse proxy. Necessary if the proxy handles
 # SSL
 # c.NotebookApp.trust_xheaders = False
 
@@ -151,6 +168,10 @@ c.NotebookApp.browser = u'luakit %s'
 
 # IPKernelApp will inherit config from: BaseIPythonApplication, Application,
 # InteractiveShellApp
+
+# Run the file referenced by the PYTHONSTARTUP environment variable at IPython
+# startup.
+# c.IPKernelApp.exec_PYTHONSTARTUP = True
 
 # The importstring for the DisplayHook factory
 # c.IPKernelApp.displayhook_class = 'IPython.kernel.zmq.displayhook.ZMQDisplayHook'
@@ -219,6 +240,10 @@ c.NotebookApp.browser = u'luakit %s'
 # redirect stdout to the null device
 # c.IPKernelApp.no_stdout = False
 
+# Should variables loaded at startup (by startup files, exec_lines, etc.) be
+# hidden from tools like %who?
+# c.IPKernelApp.hide_initial_ns = True
+
 # dotted module name of an IPython extension to load.
 # c.IPKernelApp.extra_extension = ''
 
@@ -243,7 +268,7 @@ c.NotebookApp.browser = u'luakit %s'
 # c.IPKernelApp.connection_file = ''
 
 # If true, IPython will populate the user namespace with numpy, pylab, etc. and
-# an 'import *' is done from numpy and pylab, when using pylab mode.
+# an ``import *`` is done from numpy and pylab, when using pylab mode.
 # 
 # When False, pylab mode should not import any names into the user namespace.
 # c.IPKernelApp.pylab_import_all = True
@@ -252,7 +277,7 @@ c.NotebookApp.browser = u'luakit %s'
 # configuration (through profiles), history storage, etc. The default is usually
 # $HOME/.ipython. This options can also be specified through the environment
 # variable IPYTHONDIR.
-# c.IPKernelApp.ipython_dir = u'/home/zubieta/.config/ipython'
+# c.IPKernelApp.ipython_dir = u''
 
 # Configure matplotlib for interactive use with the default matplotlib backend.
 # c.IPKernelApp.matplotlib = None
@@ -312,7 +337,7 @@ c.NotebookApp.browser = u'luakit %s'
 # c.ZMQInteractiveShell.show_rewritten_input = True
 
 # Set the color scheme (NoColor, Linux, or LightBG).
-# c.ZMQInteractiveShell.colors = 'LightBG'
+# c.ZMQInteractiveShell.colors = 'Linux'
 
 # 
 # c.ZMQInteractiveShell.separate_in = '\n'
@@ -416,12 +441,17 @@ c.NotebookApp.browser = u'luakit %s'
 # KernelManager will inherit config from: ConnectionFileMixin
 
 # The Popen Command to launch the kernel. Override this if you have a custom
+# kernel. If kernel_cmd is specified in a configuration file, IPython does not
+# pass any arguments to the kernel, because it cannot make any assumptions about
+# the  arguments that the kernel understands. In particular, this means that the
+# kernel does not receive the option --debug if it given on the IPython command
+# line.
 # c.KernelManager.kernel_cmd = []
 
 # Set the kernel's IP address [default localhost]. If the IP address is
 # something other than localhost, then Consoles on other machines will be able
 # to connect to the Kernel, so be careful!
-# c.KernelManager.ip = '127.0.0.1'
+# c.KernelManager.ip = u''
 
 # 
 # c.KernelManager.transport = 'tcp'
@@ -457,7 +487,7 @@ c.NotebookApp.browser = u'luakit %s'
 # message spec. The Session will handle serialization/deserialization, security,
 # and metadata.
 # 
-# Sessions support configurable serialiization via packer/unpacker traits, and
+# Sessions support configurable serialization via packer/unpacker traits, and
 # signing with HMAC digests via the key/keyfile traits.
 # 
 # Parameters ----------
@@ -539,8 +569,16 @@ c.NotebookApp.browser = u'luakit %s'
 
 # An object to store configuration of the inline backend.
 
-# The image format for figures with the inline backend.
-# c.InlineBackend.figure_format = 'png'
+# The figure format to enable (deprecated use `figure_formats` instead)
+# c.InlineBackend.figure_format = u''
+
+# A set of figure formats to enable: 'png',  'retina', 'jpeg', 'svg', 'pdf'.
+# c.InlineBackend.figure_formats = set(['png'])
+
+# Extra kwargs to be passed to fig.canvas.print_figure.
+# 
+# Logical examples include: bbox_inches, quality (for jpeg figures), etc.
+# c.InlineBackend.print_figure_kwargs = {'bbox_inches': 'tight'}
 
 # Close all figures at the end of each cell.
 # 
@@ -558,7 +596,7 @@ c.NotebookApp.browser = u'luakit %s'
 # c.InlineBackend.close_figures = True
 
 # Subset of matplotlib rcParams that should be different for the inline backend.
-# c.InlineBackend.rc = {'font.size': 10, 'figure.figsize': (6.0, 4.0), 'figure.facecolor': 'white', 'savefig.dpi': 72, 'figure.subplot.bottom': 0.125, 'figure.edgecolor': 'white'}
+# c.InlineBackend.rc = {'font.size': 10, 'figure.figsize': (6.0, 4.0), 'figure.facecolor': (1, 1, 1, 0), 'savefig.dpi': 72, 'figure.subplot.bottom': 0.125, 'figure.edgecolor': (1, 1, 1, 0)}
 
 #------------------------------------------------------------------------------
 # MappingKernelManager configuration
@@ -568,6 +606,9 @@ c.NotebookApp.browser = u'luakit %s'
 
 # MappingKernelManager will inherit config from: MultiKernelManager
 
+# 
+# c.MappingKernelManager.root_dir = u'/home/zubieta/.ipython'
+
 # The kernel manager class.  This is configurable to allow subclassing of the
 # KernelManager for customized behavior.
 # c.MappingKernelManager.kernel_manager_class = 'IPython.kernel.ioloop.IOLoopKernelManager'
@@ -576,8 +617,8 @@ c.NotebookApp.browser = u'luakit %s'
 # NotebookManager configuration
 #------------------------------------------------------------------------------
 
-# The directory to use for notebooks.
-# c.NotebookManager.notebook_dir = u'/home/zubieta'
+# Glob patterns to hide in file and directory listings.
+# c.NotebookManager.hide_globs = [u'__pycache__']
 
 #------------------------------------------------------------------------------
 # FileNotebookManager configuration
@@ -585,10 +626,15 @@ c.NotebookApp.browser = u'luakit %s'
 
 # FileNotebookManager will inherit config from: NotebookManager
 
-# The location in which to keep notebook checkpoints
+# The directory name in which to keep notebook checkpoints
 # 
-# By default, it is notebook-dir/.ipynb_checkpoints
-# c.FileNotebookManager.checkpoint_dir = u''
+# This is a path relative to the notebook's own directory.
+# 
+# By default, it is .ipynb_checkpoints
+# c.FileNotebookManager.checkpoint_dir = '.ipynb_checkpoints'
+
+# Glob patterns to hide in file and directory listings.
+# c.FileNotebookManager.hide_globs = [u'__pycache__']
 
 # Automatically create a Python script when saving the notebook.
 # 
@@ -597,5 +643,20 @@ c.NotebookApp.browser = u'luakit %s'
 # save.  This can also be set with the short `--script` flag.
 # c.FileNotebookManager.save_script = False
 
-# The directory to use for notebooks.
-# c.FileNotebookManager.notebook_dir = u'/home/zubieta'
+# 
+c.FileNotebookManager.notebook_dir = u'/home/zubieta/Documents/Notebooks'
+
+#------------------------------------------------------------------------------
+# NotebookNotary configuration
+#------------------------------------------------------------------------------
+
+# A class for computing and verifying notebook signatures.
+
+# The secret key with which notebooks are signed.
+# c.NotebookNotary.secret = ''
+
+# The file where the secret key is stored.
+# c.NotebookNotary.secret_file = u''
+
+# The hashing algorithm used to sign notebooks.
+# c.NotebookNotary.algorithm = 'sha256'
