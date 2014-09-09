@@ -39,7 +39,7 @@ c = get_config()
 # platform dependent and determined by the python standard library `webbrowser`
 # module, unless it is overridden using the --browser (NotebookApp.browser)
 # configuration option.
-# c.NotebookApp.open_browser = True
+c.NotebookApp.open_browser = True
 
 # The notebook manager class to use.
 # c.NotebookApp.notebook_manager_class = 'IPython.html.services.notebooks.filenbmanager.FileNotebookManager'
@@ -89,7 +89,7 @@ c = get_config()
 # c.NotebookApp.base_url = '/'
 
 # The directory to use for notebooks and kernels.
-# c.NotebookApp.notebook_dir = u'/home/zubieta/.homesick/repos/dotfiles/home/.config/ipython'
+c.NotebookApp.notebook_dir = u'/home/zubieta/Documents/Notebooks'
 
 # 
 # c.NotebookApp.file_to_run = ''
@@ -158,7 +158,7 @@ c = get_config()
 # If not specified, the default browser will be determined by the `webbrowser`
 # standard library module, which allows setting of the BROWSER environment
 # variable to override it.
-# c.NotebookApp.browser = u''
+c.NotebookApp.browser = u'luakit %s'
 
 #------------------------------------------------------------------------------
 # IPKernelApp configuration
@@ -607,7 +607,7 @@ c = get_config()
 # MappingKernelManager will inherit config from: MultiKernelManager
 
 # 
-# c.MappingKernelManager.root_dir = u'/home/zubieta/.homesick/repos/dotfiles/home/.config/ipython'
+# c.MappingKernelManager.root_dir = u'/home/zubieta/.ipython'
 
 # The kernel manager class.  This is configurable to allow subclassing of the
 # KernelManager for customized behavior.
@@ -644,7 +644,7 @@ c = get_config()
 # c.FileNotebookManager.save_script = False
 
 # 
-# c.FileNotebookManager.notebook_dir = u'/home/zubieta/.homesick/repos/dotfiles/home/.config/ipython'
+c.FileNotebookManager.notebook_dir = u'/home/zubieta/Documents/Notebooks'
 
 #------------------------------------------------------------------------------
 # NotebookNotary configuration
