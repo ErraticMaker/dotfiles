@@ -1,0 +1,6 @@
+[submodule "home/.ipython/extensions/base16_mplrc"]
+	path = home/.ipython/extensions/base16_mplrc
+	url = https://github.com/benjaminaschultz/base16-ipython-matplotlibrc.git
+[submodule "home/.ipython/extensions/asymptote"]
+	path = home/.ipython/extensions/asymptote
+	url = https://github.com/jrjohansson/ipython-asymptote.git
