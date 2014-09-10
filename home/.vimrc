@@ -1,5 +1,10 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible              " be iMproved, required by vundle
+set laststatus=2	      " allways show the statusbar
+filetype off                  " required by vundle
+
+set t_Co=256                  " Set vim 256 color support
+
+let g:airline_powerline_fonts = 1
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.homesick/repos/dotfiles/home/.vim/bundle/Vundle.vim
@@ -14,6 +19,7 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 " Plugin 'tpope/vim-fugitive'
+Plugin 'bling/vim-airline'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
