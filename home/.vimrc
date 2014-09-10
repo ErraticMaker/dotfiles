@@ -4,7 +4,7 @@ filetype off                  " required by vundle
 
 set t_Co=256                  " Set vim 256 color support
 
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1 " Load Powerline glyphs
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.homesick/repos/dotfiles/home/.vim/bundle/Vundle.vim
@@ -14,7 +14,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
+Plugin 'scrooloose/syntastic'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
