@@ -181,7 +181,7 @@ c.NotebookApp.browser = u'luakit %s'
 
 # Pre-load matplotlib and numpy for interactive use, selecting a particular
 # matplotlib backend and loop integration.
-c.IPKernelApp.pylab = True
+c.IPKernelApp.pylab = u'inline'
 
 # Create a massive crash report when IPython encounters what may be an internal
 # error.  The default is to append a short message to the usual traceback
@@ -299,7 +299,7 @@ c.IPKernelApp.pylab = True
 # c.IPKernelApp.gui = None
 
 # A list of dotted module names of IPython extensions to load.
-# c.IPKernelApp.extensions = ['base16_mplrc']
+c.IPKernelApp.extensions = ['base16_mplrc']
 
 # redirect stderr to the null device
 # c.IPKernelApp.no_stderr = False
