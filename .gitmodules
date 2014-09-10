@@ -4,3 +4,6 @@
 [submodule "home/.ipython/extensions/asymptote"]
 	path = home/.ipython/extensions/asymptote
 	url = https://github.com/jrjohansson/ipython-asymptote.git
+[submodule "home/.vim/pathogen"]
+	path = home/.vim/pathogen
+	url = https://github.com/tpope/vim-pathogen.git
