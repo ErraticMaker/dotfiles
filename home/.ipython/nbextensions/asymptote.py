@@ -1,1 +1,0 @@
-asymptote/asymptote.py
