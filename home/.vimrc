@@ -3,8 +3,14 @@ set laststatus=2	      " allways show the statusbar
 filetype off                  " required by vundle
 
 set t_Co=256                  " Set vim 256 color support
+set number
+set colorcolumn=60,80
+set expandtab
+set tabstop=4
+set shiftwidth=4
 
-let g:airline_powerline_fonts = 1 " Load Powerline glyphs
+autocmd FileType markdown setlocal tabstop=2 shiftwidth=2
+autocmd Filetype makefile setlocal noexpandtab
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.homesick/repos/dotfiles/home/.vim/bundle/Vundle.vim
@@ -14,12 +20,21 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/syntastic'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 " Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
+Plugin 'scrooloose/syntastic'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'Valloric/YouCompleteMe'
+" Colorschemes from GitHub
+Plugin 'sjl/badwolf'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'vim-scripts/BusyBee'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'morhetz/gruvbox'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -46,3 +61,22 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" Plugins config
+let g:airline_powerline_fonts = 1 " Load Powerline glyphs
+let g:vim_markdown_folding_disabled = 1 " Disable folding for markdown
+
+" Color schemes
+if !has("gui_running")
+	let g:gruvbox_italic=0
+endif
+
+let g:gruvbox_contrast_dark = 'hard'
+
+set background=dark
+colorscheme gruvbox
+
+"autocmd FileType vim colorscheme Tomorrow-Night-Eighties
+"autocmd FileType c,cpp colorscheme BusyBee
+"autocmd FileType markdown colorscheme hybrid
+"autocmd FileType python colorscheme badwolf
