@@ -41,3 +41,9 @@ export TODO="t"
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
+
+# Export Less options
+# Highlight source code
+#export LESSOPEN="| ~/.lessfilter %s"
+# Show colors and line numbers
+export LESS='-RN'
