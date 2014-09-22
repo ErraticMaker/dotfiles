@@ -46,4 +46,4 @@ source $BASH_IT/bash_it.sh
 # Highlight source code
 #export LESSOPEN="| ~/.lessfilter %s"
 # Show colors and line numbers
-export LESS='-RN'
+export LESS='-R'
