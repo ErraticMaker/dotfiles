@@ -47,3 +47,11 @@ source $BASH_IT/bash_it.sh
 #export LESSOPEN="| ~/.lessfilter %s"
 # Show colors and line numbers
 export LESS='-R'
+# Show colored man pages
+export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode
+export LESS_TERMCAP_md=$(printf '\e[01;32;5;75m') # enter double-bright mode
+export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md, so, us)
+export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
+export LESS_TERMCAP_so=$(printf '\e[01;34m') # enter standout mode
+export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
+export LESS_TERMCAP_us=$(printf '\e[04;36;5;200m') # enter underline mode 
