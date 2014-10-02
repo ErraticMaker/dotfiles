@@ -8,9 +8,11 @@ set colorcolumn=60,80
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set hlsearch
 
 autocmd FileType markdown setlocal tabstop=2 shiftwidth=2
 autocmd Filetype makefile setlocal noexpandtab
+autocmd FileType python setlocal colorcolumn=72,79
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.homesick/repos/dotfiles/home/.vim/bundle/Vundle.vim
