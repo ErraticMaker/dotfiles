@@ -115,9 +115,10 @@ fi
 
 # Call Homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-
 source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 
 # Call Bash-it
-
 source "$HOME/.bash_profile"
+
+# Call Machine Specific Function/Aliases
+source "$HOME/.bash_computer"
