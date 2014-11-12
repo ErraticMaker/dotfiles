@@ -1,8 +1,9 @@
-set nocompatible              " be iMproved, required by vundle
-set laststatus=2	      " allways show the statusbar
-filetype off                  " required by vundle
+syntax on               " enable syntax highlighting
+set nocompatible        " be iMproved, required by vundle
+set laststatus=2	    " allways show the statusbar
+filetype off            " required by vundle
 
-set t_Co=256                  " Set vim 256 color support
+set t_Co=256            " Set vim 256 color support
 set number
 set colorcolumn=60,80
 set expandtab
