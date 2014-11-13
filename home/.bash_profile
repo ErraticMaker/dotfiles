@@ -48,7 +48,7 @@ fi
 # Highlight source code
 #export LESSOPEN="| ~/.lessfilter %s"
 # Show colors and line numbers
-export LESS='-R'
+export LESS='-R -N'
 # Show colored man pages
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode
 export LESS_TERMCAP_md=$(printf '\e[01;32;5;75m') # enter double-bright mode
