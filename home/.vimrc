@@ -59,9 +59,11 @@ filetype plugin indent on    " required
 "
 " Brief help
 " :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginInstall    - installs plugins; append `!` to update
+"                     or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+"                     auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
@@ -70,6 +72,9 @@ filetype plugin indent on    " required
 let g:airline_powerline_fonts = 1 " Load Powerline glyphs
 let g:vim_markdown_folding_disabled = 1 " Disable folding for markdown
 
+let g:airline#extensions#tmuxline#enabled = 0 " Disable Tmuxline so it doesn't
+                                              " overwrite the current
+                                              " configuration
 let g:tmuxline_theme = 'vim_powerline'
 let g:tmuxline_preset = 'full'
 
