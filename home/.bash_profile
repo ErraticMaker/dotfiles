@@ -40,7 +40,9 @@ export TODO="t"
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
 # Load Bash It
-source $BASH_IT/bash_it.sh
+if [ -f $BASH_IT/bash_it.sh ]; then
+    source $BASH_IT/bash_it.sh
+fi
 
 # Export Less options
 # Highlight source code
@@ -54,6 +56,21 @@ export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes (mb, md
 export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
 export LESS_TERMCAP_so=$(printf '\e[01;34m') # enter standout mode
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
-export LESS_TERMCAP_us=$(printf '\e[04;36;5;200m') # enter underline mode 
+export LESS_TERMCAP_us=$(printf '\e[04;36;5;200m') # enter underline mode
 
 export TERM=screen-256color-bce
+
+# Call Homeshick
+HOMESHICK="$HOME/.homesick/repos/homeshick/homeshick.sh"
+HS_COMPL="$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
+if [ -f $HOMESHICK ]; then
+    source $HOMESHICK
+fi
+if [ -f $HS_COMPL ]; then
+    source $HS_COMPL
+fi
+
+# Call Machine Specific Function/Envs/Aliases
+if [ -f "$HOME/.bash_computer" ]; then
+    source "$HOME/.bash_computer"
+fi
