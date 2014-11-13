@@ -32,6 +32,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'edkolev/tmuxline.vim'
 " Colorschemes from GitHub
 Plugin 'sjl/badwolf'
 Plugin 'w0ng/vim-hybrid'
@@ -68,6 +69,9 @@ filetype plugin indent on    " required
 " Plugins config
 let g:airline_powerline_fonts = 1 " Load Powerline glyphs
 let g:vim_markdown_folding_disabled = 1 " Disable folding for markdown
+
+let g:tmuxline_theme = 'vim_powerline'
+let g:tmuxline_preset = 'full'
 
 " Color schemes
 if !has("gui_running")
