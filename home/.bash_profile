@@ -74,3 +74,8 @@ fi
 if [ -f "$HOME/.bash_computer" ]; then
     source "$HOME/.bash_computer"
 fi
+
+# Add local to path
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$PATH:$HOME/.local/bin"
+fi
