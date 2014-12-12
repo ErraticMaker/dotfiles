@@ -88,6 +88,8 @@ let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 colorscheme gruvbox
 
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
 "autocmd FileType vim colorscheme Tomorrow-Night-Eighties
 "autocmd FileType c,cpp colorscheme BusyBee
 "autocmd FileType markdown colorscheme hybrid
