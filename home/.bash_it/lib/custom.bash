@@ -11,3 +11,33 @@ proxy_off() {
     unset all_proxy
     echo -e "Proxy enviroment varibles removed."
 }
+
+show() {
+    local OPTIND s SCALE OPT OPTARG
+    SCALE=40
+    ERROR=0
+    while getopts ":s:" OPT
+    do
+        case "${OPT}" in
+            s)
+                SCALE="${OPTARG}"
+                ;;
+            *)
+                echo "Invalid option ${OPTARG}."
+                ERROR=1
+                ;;
+        esac
+    done
+    shift $((OPTIND-1))
+
+    if [ $# -eq 0 ]; then
+        ERROR=1
+    fi
+
+    if [ ${ERROR} -eq 1 ]; then
+        echo "Usage: show [-s <scale>] <image>"
+        return 1
+    fi
+        
+    w3m -o display_image=1 $1 -o image_scale=${SCALE} -o confirm_qq=0
+}
