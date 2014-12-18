@@ -41,3 +41,13 @@ show() {
         
     w3m -o display_image=1 $1 -o image_scale=${SCALE} -o confirm_qq=0
 }
+
+lyrics() {
+    if [[ $# -ne 2 ]]
+    then
+        echo "Usage: lyrics <song> [<artist>]"
+        return 1
+    fi
+
+    glyrc lyrics -t "$1" -a "$2" -w 'stdout'  | sed 's/.*();//g' | less
+}
