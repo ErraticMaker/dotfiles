@@ -1,4 +1,4 @@
-alias msf="sudo mount -t vboxsf Virtualbox_Shared_Folder /home/zubieta/VBShared/"
+alias msf="sudo mount -t vboxsf Virtualbox_Shared_Folder ~/VBShared/"
 alias ipnb="ipython notebook --pylab=inline --profile='base16-railscasts-dark'"
 alias reload="source ~/.bashrc"
 alias quit="exit"
