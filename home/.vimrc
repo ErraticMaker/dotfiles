@@ -1,3 +1,5 @@
+let mapleader = ","     " Change Leader key to ,
+
 syntax on               " enable syntax highlighting
 set nocompatible        " be iMproved, required by vundle
 set laststatus=2	    " allways show the statusbar
