@@ -33,6 +33,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'edkolev/tmuxline.vim'
+Plugin 'rhysd/vim-clang-format'
 " Colorschemes from GitHub
 Plugin 'sjl/badwolf'
 Plugin 'w0ng/vim-hybrid'
@@ -94,3 +95,14 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 "autocmd FileType c,cpp colorscheme BusyBee
 "autocmd FileType markdown colorscheme hybrid
 "autocmd FileType python colorscheme badwolf
+
+let g:clang_format#code_style = "mozilla"
+let g:clang_format#style_options = {
+    \ "AlwaysBreakTemplateDeclarations" : "true",
+    \ "MaxEmptyLinesToKeep" : 2,
+    \ "IndentWidth" : 4,
+    \ "BreakBeforeBraces": "Stroustrup" }
+
+" map <Leader>F in c/c++/obj-c code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>F :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>F :ClangFormat<CR>
