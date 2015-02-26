@@ -3,7 +3,7 @@
 proxy_off() {
     gsettings set org.gnome.system.proxy mode 'none'
     echo -e "System proxy disabled."
-    
+
     unset http_proxy
     unset https_proxy
     unset ftp_proxy
@@ -38,7 +38,7 @@ show() {
         echo "Usage: show [-s <scale>] <image>"
         return 1
     fi
-        
+
     w3m -o display_image=1 $1 -o image_scale=${SCALE} -o confirm_qq=0
 }
 
@@ -49,5 +49,5 @@ lyrics() {
         return 1
     fi
 
-    glyrc lyrics -t "$1" -a "$2" -w 'stdout'  | sed 's/.*();//g' | less
+    glyrc lyrics -t "$1" -a "$2" -w 'stdout'  | sed 's/.*();//g' | less -n
 }
