@@ -79,3 +79,6 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
     export PATH="$PATH:$HOME/.local/bin"
 fi
+
+# Trim prompt
+export PROMPT_DIRTRIM=2
