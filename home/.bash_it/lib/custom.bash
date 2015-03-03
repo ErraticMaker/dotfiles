@@ -45,7 +45,7 @@ show() {
 lyrics() {
     if [[ $# -ne 2 ]]
     then
-        echo "Usage: lyrics <song> [<artist>]"
+        echo "Usage: lyrics <song> <artist>"
         return 1
     fi
 
