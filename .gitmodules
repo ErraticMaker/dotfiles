@@ -4,9 +4,6 @@
 [submodule "home/.ipython/extensions/asymptote"]
 	path = home/.ipython/extensions/asymptote
 	url = https://github.com/jrjohansson/ipython-asymptote.git
-[submodule "home/.vim/bundle/Vundle.vim"]
-	path = home/.vim/bundle/Vundle.vim
-	url = https://github.com/gmarik/Vundle.vim.git
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
