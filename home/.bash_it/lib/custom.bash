@@ -51,3 +51,13 @@ lyrics() {
 
     glyrc lyrics -t "$1" -a "$2" -w 'stdout'  | sed 's/.*();//g' | less -n
 }
+
+bak() {
+    if [[ $# -ne 1 ]]
+    then
+        echo "Creates a backup of a given file.\nUsage: bak <file>"
+        return 1
+    fi
+
+    cp ${1} ${1}.bak
+}
