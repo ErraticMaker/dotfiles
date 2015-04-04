@@ -31,7 +31,7 @@ call vundle#begin()
 " plugin on GitHub repo
 " Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Valloric/YouCompleteMe'
