@@ -46,7 +46,7 @@ fi
 
 # Export Less options
 # Highlight source code
-#export LESSOPEN="| ~/.lessfilter %s"
+export LESSOPEN="|/usr/bin/lesspipe %s"
 # Show colors and line numbers
 export LESS='-R -N'
 # Show colored man pages
