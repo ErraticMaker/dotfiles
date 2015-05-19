@@ -29,14 +29,16 @@ call vundle#begin()
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+" Plugin 'christoomey/vim-tmux-navigator'
 " Colorschemes from GitHub
 Plugin 'sjl/badwolf'
 Plugin 'w0ng/vim-hybrid'
@@ -92,7 +94,20 @@ let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 colorscheme gruvbox
 
+set statusline+=%#warningnsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+let g:cpp_class_scope_highlight = 1
+
+" let g:tmux_navigator_no_mappings = 1
 
 "autocmd FileType vim colorscheme Tomorrow-Night-Eighties
 "autocmd FileType c,cpp colorscheme BusyBee
