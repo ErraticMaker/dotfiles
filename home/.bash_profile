@@ -34,6 +34,7 @@ export IRC_CLIENT='weechat'
 # Set this to the command you use for todo.txt-cli
 
 export TODO="t"
+export TODOTXT_DEFAULT_ACTION=projectview
 
 # Set vcprompt executable path for scm advance info in prompt (demula theme)
 # https://github.com/xvzf/vcprompt
@@ -82,3 +83,14 @@ fi
 
 # Trim prompt
 export PROMPT_DIRTRIM=2
+
+# GTAGS
+export GTAGSFORCECPP=""
+
+# TEAMFORGE_USER
+export TEAMFORGE_USER="carlos.zubieta"
+
+export WORKSPACE="BP4TM"
+export WORKSPACE_PATH="${HOME}/Projects/BP4TM/belief_propagation"
+
+unset BASH_IT_LEGACY_PASS

@@ -61,3 +61,24 @@ bak() {
 
     cp ${1} ${1}.bak
 }
+
+spot () {
+    if [ $# -gt 1 -o "$1" = "h" ]
+    then
+        echo "Usage: spot [p|n|q|b|h]"
+        echo ""
+        echo "Options:"
+        echo "   - Toggle play/pause"
+        echo " p - Previous song"
+        echo " n - Next song"
+        echo " b - Toggle block/unblock song"
+        echo " q - Quit"
+        echo " h - Show this help"
+        return 1
+    elif [[ $# -eq 0 ]]; then pkill -RTMIN+2 -f "python.*blockify";
+    elif [[ "$1" = "p" ]]; then pkill -RTMIN -f "python.*blockify";
+    elif [[ "$1" = "n" ]]; then pkill -RTMIN+1 -f "python.*blockify";
+    elif [[ "$1" = "b" ]]; then pkill -RTMIN+3 -f "python.*blockify";
+    elif [[ "$1" = "q" ]]; then pkill -TERM -f "python.*blockify";
+    fi
+}

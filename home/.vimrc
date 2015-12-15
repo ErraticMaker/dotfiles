@@ -1,3 +1,5 @@
+set encoding=utf-8
+
 let mapleader = ","     " Change Leader key to ,
 
 syntax on               " enable syntax highlighting
@@ -12,6 +14,12 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set hlsearch
+
+set spell spelllang=en_us " Set spelling default language
+
+if argc() == 2          " Whe opening two files open them in a vertical split
+    silent vertical all
+endif
 
 autocmd FileType markdown setlocal tabstop=2 shiftwidth=2
 autocmd Filetype makefile setlocal noexpandtab
@@ -38,6 +46,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'bonnefoa/vim-capnp'
+Plugin 'whatot/gtags-cscope.vim'
+Plugin 'fmoralesc/vim-pad'
 " Plugin 'christoomey/vim-tmux-navigator'
 " Colorschemes from GitHub
 Plugin 'sjl/badwolf'
@@ -103,7 +114,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+let g:ycm_show_diagnostics_ui = 0
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_confirm_extra_conf = 1
 
 let g:cpp_class_scope_highlight = 1
 
@@ -114,13 +127,21 @@ let g:cpp_class_scope_highlight = 1
 "autocmd FileType markdown colorscheme hybrid
 "autocmd FileType python colorscheme badwolf
 
+let g:clang_format#detect_style_file = 1
 let g:clang_format#code_style = "mozilla"
 let g:clang_format#style_options = {
     \ "AlwaysBreakTemplateDeclarations" : "true",
     \ "MaxEmptyLinesToKeep" : 2,
     \ "IndentWidth" : 4,
-    \ "BreakBeforeBraces": "Stroustrup" }
+    \ "BreakBeforeBraces": "Stroustrup",
+    \ "Standard" : "C++11"}
 
 " map <Leader>F in c/c++/obj-c code
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>F :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>F :ClangFormat<CR>
+autocmd FileType c,cpp,objc,hpp,h nnoremap <buffer><Leader>F :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc,hpp,h vnoremap <buffer><Leader>F :ClangFormat<CR>
+
+" Gtags-Cscope
+let GtagsCscope_Auto_Load = 1
+let GtagsCscope_Auto_Map = 1
+let GtagsCscope_Quiet = 1
+set cscopetag
